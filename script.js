@@ -61,7 +61,8 @@ async function getNames() {
 
         const input = document.createElement("input");
         input.type = "text";
-        input.name = "person_" + i;
+        input.name = i;
+        input.id = "person_" + i;
         input.required = false;
         input.maxLength = 30;
 
