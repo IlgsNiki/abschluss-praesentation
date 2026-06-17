@@ -1,3 +1,4 @@
+console.log("Script.js loaded successfully!");
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
 const supabaseUrl = "https://wmxjsxtsdxbdeiheabsc.supabase.co";
@@ -26,14 +27,6 @@ function getCookie(name) {
             return c.substring(name.length, c.length);
         }
     }
-}
-
-console.log("Script.js loaded successfully!");
-function setCookie(name, value, days) {
-    const d = new Date();
-    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + d.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 let names = [];
 const survey = document.getElementById("survey")
