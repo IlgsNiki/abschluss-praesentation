@@ -68,7 +68,7 @@ async function getNames() {
 
 }
 getNames();
-function logout() {
+async function logout() {
     const code = getCookie("code")
     const email = getCookie("email")
     deleteCookie("code");
