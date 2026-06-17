@@ -4,7 +4,15 @@ const supabaseUrl = "https://wmxjsxtsdxbdeiheabsc.supabase.co";
 const supabaseKey = "sb_publishable_LyvE9X1tzhXaWKvUr454Lg_qap7_kwN";
 
 const supabase = createClient(supabaseUrl, supabaseKey)
-
+function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+function deleteCookie(name) {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
 
 console.log("Script.js loaded successfully!");
 function setCookie(name, value, days) {
@@ -52,3 +60,8 @@ async function getNames() {
 
 }
 getNames();
+function datenschutz() {
+    deleteCookie("code");
+    deleteCookie("verified");
+    deleteCookie("email");
+}

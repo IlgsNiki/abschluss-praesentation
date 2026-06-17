@@ -198,7 +198,7 @@ async function login() {
 
                 setCookie("code", code, 1);
                 setCookie("verified", true, 1);
-                setCookie("email", email, 1)
+                setCookie("email", email, 1);
                 window.location.replace("vote.html");
             });
 
