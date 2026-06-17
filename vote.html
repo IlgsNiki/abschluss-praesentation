@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer type="module"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Abstimmung:</h1>
+        <p>Du wirst alle Personen aus der Klasse bekommen und musst sie dann mit <b>EINEM</b> Adjektiv beschreiben.
+            Wichtig, leider erwarte ich von gewissen personen negative Eigenschaften. Die Antworten werden aber nicht
+            eins zu eins übertragen sondern zensiert. Wer zensierungswürdige Adjektive einreicht, wird gesperrt.</p>
+        <section class="survey">
+            <form name="adjektive" netlify>
+                <section id="survey"></section>
+                <!--automatisch generiert-->
+                <span id="datenschutz"><input id="datenschutz-checkbox" type="checkbox" required> Mit dem Absenden meiner Antworten, erkläre ich mich bereit, dass meine Daten anonym analysiert werden dürfen, und unangemessene Inhalte identifizierbar entfernt werden.<sapn id="star">*</sapn> </span>
+                <button type="submit">Send!</button>
+            </form>
+        </section>
+    </main>
+</body>
