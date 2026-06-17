@@ -56,7 +56,7 @@ async function createSurvey() {
 
         const input = document.createElement("input");
         input.type = "text";
-        input.name = i;
+        input.name = names[i];
         input.id = "person_" + i;
         input.required = false;
         input.maxLength = 30;
@@ -87,7 +87,16 @@ async function logout() {
 document.getElementById("form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    const antworten = {};
+
+    document.querySelectorAll("#survey input").forEach(input => {
+        antworten[input.name] = input.value.trim();
+    });
+
+    document.getElementById("antworten").value =
+        JSON.stringify(antworten);
+
     await logout();
 
-    event.target.submit(); // Formular an Netlify senden
+    event.target.submit();
 });
