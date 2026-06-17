@@ -186,15 +186,6 @@ async function login() {
                     return;
                 }
                 console.log("Login erfolgreich");
-                // Eimalcode löschen
-                const { error } = await supabase
-                    .from('private_codes')
-                    .update({ 'used': true })
-                    .eq('id', data.id);
-
-                if (error) {
-                    errorMessage.textContent = error;
-                }
 
                 setCookie("code", code, 1);
                 setCookie("verified", true, 1);

@@ -13,6 +13,20 @@ function setCookie(name, value, days) {
 function deleteCookie(name) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
+function getCookie(name) {
+    name = name + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+}
 
 console.log("Script.js loaded successfully!");
 function setCookie(name, value, days) {
@@ -60,8 +74,23 @@ async function getNames() {
 
 }
 getNames();
-function datenschutz() {
+function logout() {
+    const code = getCookie("code")
+    const email = getCookie("email")
     deleteCookie("code");
     deleteCookie("verified");
     deleteCookie("email");
+    // Eimalcode löschen
+    const { error } = await supabase
+        .from('private_codes')
+        .update({ 'used': true })
+        .eq('email', email);
+
 }
+document.getElementById("form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    await logout();
+
+    event.target.submit(); // Formular an Netlify senden
+});
