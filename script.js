@@ -13,27 +13,6 @@ function setCookie(name, value, days) {
     const expires = "expires=" + d.toUTCString();
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
-function getCookie(name) {
-    name = name + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-}
-function checkLogin() {
-    const code = getCookie("code");
-    if (!code) {
-        window.location.href = "login.html";
-    }
-}
-checkLogin();
 let names = [];
 const survey = document.getElementById("survey")
 async function getNames() {
@@ -61,7 +40,7 @@ async function getNames() {
         const input = document.createElement("input");
         input.type = "text";
         input.name = "person_" + i;
-        input.required = true;
+        input.required = false;
         input.maxLength = 30;
 
         const br = document.createElement("br");

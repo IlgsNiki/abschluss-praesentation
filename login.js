@@ -159,7 +159,7 @@ async function login() {
         if (data) {
             console.log('Code vorhanden.');
             if (!data.verified) {
-                errorMessage.textContent = "Dein Code muss noch Bestätigt werden. Vielleicht schreibst du mir ein Whatsapp, um es zu Beschleunigen?";
+                errorMessage.textContent = "Dein Code muss noch bestätigt werden. Vielleicht schreibst du mir ein Whatsapp, um es zu Beschleunigen?";
                 reset();
                 return;
             }
