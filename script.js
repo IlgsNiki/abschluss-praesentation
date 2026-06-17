@@ -90,7 +90,11 @@ document.getElementById("form").addEventListener("submit", async (event) => {
     const antworten = {};
 
     document.querySelectorAll("#survey input").forEach(input => {
-        antworten[input.name] = input.value.trim();
+        const wert = input.value.trim();
+
+        if (wert !== "") {
+            antworten[input.name] = wert;
+        }
     });
 
     document.getElementById("antworten").value =
