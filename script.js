@@ -29,8 +29,10 @@ function getCookie(name) {
     }
 }
 let names = [];
-const survey = document.getElementById("survey")
-async function getNames() {
+const survey = document.getElementById("survey");
+const codeInput = document.getElementById("code");
+const code = getCookie("code")
+async function createSurvey() {
     const { data, error } = await supabase
         .from('personen')
         .select('*')  // <-- wichtig statt single()
@@ -65,9 +67,10 @@ async function getNames() {
         survey.appendChild(input);
         survey.appendChild(br);
     }
+    codeInput.value = code;
 
 }
-getNames();
+createSurvey();
 async function logout() {
     const code = getCookie("code")
     const email = getCookie("email")
