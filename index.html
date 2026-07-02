@@ -10,8 +10,47 @@
 
 <body>
     <main>
-        <p>Bitte melde dich mit deinem privaten Abstimmungscode an. Du kannst auch einen Code beantragen. Die Abstimmung ist anonym, aber weil sicher jemand
+        <p>Bitte melde dich mit deinem privaten Abstimmungscode an. Du kannst auch einen Code beantragen. Die Abstimmung
+            ist anonym, aber weil sicher jemand
             sich denkt, er sei besonderst schlau und antwortet zweimal müssen wir einen Code verwenden.</p>
-        <a href="vote.html" type="button">Los geht's!</a>
+        <a id="vote-link" href="vote.html" type="button" style="display: none;">Los geht's!</a>
+        <article id="timer">loading...</article>
+        <script>
+            function updateTimer() {
+                const timer = document.getElementById("timer");
+
+                setInterval(() => {
+                    const jetzt = new Date();
+                    const date = jetzt.getDate();
+                    const stunde = jetzt.getHours();
+                    const minute = jetzt.getMinutes();
+                    const sekunde = jetzt.getSeconds();
+
+                    if (stunde < (4 - date) * 24) {
+
+                        const stunden_left = (4 - date) * 24 - stunde;
+                        const minuten_left = 59 - minute;
+                        const sekunden_left = 59 - sekunde;
+                        const voteLink = document.getElementById("vote-link");
+                        voteLink.style.display = "block";
+
+                        timer.innerHTML =
+                            `${stunden_left}:${String(minuten_left).padStart(2, "0")}:${String(sekunden_left).padStart(2, "0")}`;
+
+                    } else {
+                        timer.innerHTML = "Die Abstimmung ist vorbei.";
+                        timer.style.color = "red";
+                        const voteLink = document.getElementById("vote-link");
+                        voteLink.style.display = "none";
+                    }
+
+                }, 1000);
+            }
+
+            updateTimer();
+            updateTimer();
+        </script>
     </main>
 </body>
+
+</html>
