@@ -1,36 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Surprise</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
     <script src="admin.js" defer type="module"></script>
-</head>
+  </head>
 
-<body class="login-page">
+  <body class="login-page">
     <main>
-        <h1>Admin Console</h1>
-        <section id="anfragen">
-            <h2>Offene Anfragen:</h2>
-            <table id="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Code</th>
-                        <th>Verifizieren</th>
-                    </tr>
-                </thead>
-                <tbody id="requests">
-                    <!--per js geladen-->
-                </tbody>
-            </table>
-        </section>
+      <h1>Admin Console</h1>
+
+      <section id="code">
+        <table id="usersTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Code</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
     </main>
-</body>
-<script type="module">
-</script>
+  </body>
+  <script type="module"></script>
+</html>

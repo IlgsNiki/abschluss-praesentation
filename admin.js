@@ -32,52 +32,30 @@ function checkAdmin() {
     }
 }
 checkAdmin();
-async function loadRequests() {
-    const table = document.getElementById("requests")
+
+
+async function ladeDaten() {
     const { data, error } = await supabase
-        .from('private_codes')
-        .select('*')
-        .eq('verified', false)
-    console.log(data);
-    console.log(data.length)
-    if (data.length == 0) {
-        document.getElementById("anfragen").style.display = "none";
-    }
+        .from("private_codes")
+        .select("*");
+
     if (error) {
         console.error(error);
-    } else {
-        const requests = document.getElementById("requests");
+        return;
+    }
 
-        requests.innerHTML = "";
+    const tbody = document.querySelector("#usersTable tbody");
 
-        data.forEach(eintrag => {
-            requests.innerHTML += `
+    data.forEach(user => {
+        tbody.innerHTML += `
             <tr>
-                <td>${eintrag.id}</td>
-                <td>${eintrag.name ?? "-"}</td>
-                <td>${eintrag.email}</td>
-                <td>${eintrag.code}</td>
-                <td>
-                    <button onclick="verify(${eintrag.id})">
-                        Verifizieren
-                    </button>
-                </td>
+                <td>${user.id}</td>
+                <td>${user.Name}</td>
+                <td>${user.email}</td>
+                <td>${user.code}</td>
             </tr>
         `;
-        });
+    });
+}
 
-    }
-}
-loadRequests();
-async function verify(id) {
-    const { error } = await supabase
-        .from('private_codes')
-        .update({ verified: true })
-        .eq('id', id);
-    loadRequests()
-    if (error) {
-        console.log(error)
-    }
-    console.log("updated " + id)
-}
-window.verify = verify;
+ladeDaten();
